@@ -4,8 +4,8 @@ confirmOnQuit: true
 quitOnTopLevelReturn: true
 git:
   commitPrefix:
-    pattern: "^\\w+\\/(\\w+-\\d+).*"
-    replace: "[$1] "
+    - pattern: "^\\w+\\/(\\w+-\\d+).*"
+      replace: "[$1] "
   paging:
     colorArg: always
     pager: delta --dark --paging=never --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
@@ -33,6 +33,5 @@ gui:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
-
   authorColors:
     "*": "#b4befe"
