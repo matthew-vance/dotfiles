@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-eval "$(op completion zsh)"
+if command -v op &>/dev/null; then
+    eval "$(op completion zsh)"
+fi
 
 # ssh agent
 if [[ -f "$HOME/.agent-bridge.sh" ]]; then
