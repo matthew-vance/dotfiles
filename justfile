@@ -1,7 +1,14 @@
-[working-directory: "stow"]
-stow target="$HOME":
-  @stow . --dotfiles --target {{target}} --verbose
+set dotenv-load := true
+set dotenv-required := true
+target := "$HOME"
+common-dir := "common"
+machine-dir := "$MACHINE_DIR"
 
-[working-directory: "stow"]
-unstow target="$HOME":
-  @stow --delete . --dotfiles --target {{target}} --verbose
+apply: (_stow common-dir) (_stow machine-dir)
+clean: (_unstow common-dir) (_unstow machine-dir)
+
+_stow dir:
+  @stow {{dir}} --dotfiles --target {{target}} --verbose
+
+_unstow dir:
+  @stow --delete {{dir}} --dotfiles --target {{target}} --verbose

@@ -6,4 +6,3 @@ window-height = 50
 window-inherit-working-directory = false
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
-

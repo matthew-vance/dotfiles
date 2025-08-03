@@ -4,6 +4,7 @@
 *.backup
 _tmp/
 .tmp/
+.env
 
 # zsh
 local.zsh

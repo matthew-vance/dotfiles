@@ -48,7 +48,7 @@ alias ff="rg --files -uu -g \"!.git\" | fzf --preview 'bat --color=always --styl
 
 alias so="source ${ZDOTDIR}/.zshrc"
 
-alias path="echo \"${PATH}\" | tr ':' '\n'"
+alias path="echo ${PATH} | tr ':' '\n'"
 alias spath="path | fzf --border --height 50% | copy"
 
 alias ping="ping -c 5"
@@ -57,8 +57,6 @@ alias now='date +"%T"'
 
 alias tf="terraform"
 alias k="kubectl"
-
-alias love="/Applications/love.app/Contents/MacOS/love"
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 

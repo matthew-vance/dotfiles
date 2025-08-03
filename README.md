@@ -30,13 +30,18 @@ This whole thing basically works by mirroring the layout of the home directory a
 Clone the repo anywhere.
 
 ```sh
-git clone git@github.com:matthew-vance/dotfiles.git ~/dotfiles
+git clone git@github.com:matthew-vance/dotfiles.git && cd ./dotfiles
+```
+
+Create a `.env` from the `example.env` file in the root of the repo and set the values.
+
+```sh
+cp example.env .env
 ```
 
 Run `just` to apply the config.
 
 ```sh
-cd ~/dotfiles
 just
 ```
 
