@@ -59,7 +59,7 @@ By default Stow will symlink the contents of the `stow` directory to `$HOME`, so
 
 ### Local config
 
-Some tools support local configuration files that are not checked into the repository. For example, `zsh` supports a `local.zsh` file that can be used to add local shell config. These files can be added to the `local` directory and they will be symlinked just like the common and machine-specific files.
+Shell files can be placed in `local/` to be sourced automatically.
 
 ### Plugin management
 

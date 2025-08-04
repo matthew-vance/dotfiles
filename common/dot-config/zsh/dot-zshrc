@@ -17,4 +17,8 @@ bindkey '^[[B' history-substring-search-down
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
 
-[[ -e "$ZDOTDIR/local.zsh" ]] && source "$ZDOTDIR/local.zsh"
+if [[ -d "$ZDOTDIR/local" ]]; then
+  for file in "$ZDOTDIR/local"/*.zsh; do
+    [[ -e "$file" ]] && source "$file"
+  done
+fi
