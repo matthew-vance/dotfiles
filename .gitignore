@@ -7,7 +7,6 @@ _tmp/
 .env
 
 # zsh
-local.zsh
 .zsh_plugins.zsh
 .zcompdump
 .zsh_sessions
@@ -18,3 +17,5 @@ local.zsh
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+local/

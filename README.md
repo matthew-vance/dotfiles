@@ -33,10 +33,10 @@ Clone the repo anywhere.
 git clone git@github.com:matthew-vance/dotfiles.git && cd ./dotfiles
 ```
 
-Create a `.env` from the `example.env` file in the root of the repo and set the values.
+Run `bootstrap.sh` to do basic setup.
 
 ```sh
-cp example.env .env
+./bootstrap.sh
 ```
 
 Init the submodule for the desired machine.
@@ -59,7 +59,7 @@ By default Stow will symlink the contents of the `stow` directory to `$HOME`, so
 
 ### Local config
 
-A `local.zsh` file can be placed in the `stow/dot-config/zsh` directory to add local shell config.
+Some tools support local configuration files that are not checked into the repository. For example, `zsh` supports a `local.zsh` file that can be used to add local shell config. These files can be added to the `local` directory and they will be symlinked just like the common and machine-specific files.
 
 ### Plugin management
 
