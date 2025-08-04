@@ -1,6 +1,6 @@
 # dotfiles
 
-`stow` is used to manage the symlinks. It is available in most package managers.
+`stow` is used to manage the symlinks. It can be installed with Homebrew or with the `bootstrap.sh` script.
 This whole thing basically works by mirroring the layout of the home directory and symlinking all of the files.
 
 ## Requirements
@@ -51,7 +51,7 @@ Run `just` to apply the config.
 just
 ```
 
-See the [justfile](justfile) for full list of available commands.
+See the [justfile](justfile) for the full list of available commands.
 
 By default Stow will symlink the contents of the `stow` directory to `$HOME`, so the directory structure should mirror the structure you want in that directory.
 
