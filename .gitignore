@@ -4,9 +4,10 @@
 *.backup
 _tmp/
 .tmp/
+.env
 
 # zsh
-.local.zsh
+local.zsh
 .zsh_plugins.zsh
 .zcompdump
 .zsh_sessions

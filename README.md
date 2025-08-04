@@ -15,6 +15,7 @@ This whole thing basically works by mirroring the layout of the home directory a
 - `zoxide` - smart `cd` alternative
 - `git-delta` - `git` diff viewer
 - `starship` - shell prompt
+- `just` - command runner
 
 ## Optional
 
@@ -26,26 +27,33 @@ This whole thing basically works by mirroring the layout of the home directory a
 
 ## Usage
 
-Clone the repo into the home directory.
+Clone the repo anywhere.
 
 ```sh
-git clone git@github.com:matthew-vance/dotfiles.git ~/dotfiles
+git clone git@github.com:matthew-vance/dotfiles.git && cd ./dotfiles
 ```
 
-Use `stow` to symlink the config files for the desired application.
+Create a `.env` from the `example.env` file in the root of the repo and set the values.
 
 ```sh
-cd ~/dotfiles
-stow zsh
+cp example.env .env
 ```
 
-Stow will symlink the contents of the directory, so the directory structure should mirror the stucture you want in the home directory. For example, the `zsh` directory contains the `.zshenv` file and other files in a `.config` directory. The `zsh` directory is symlinked to the home directory, so the `.zshenv` file will be symlinked to `~/.zshenv` and the `.config` directory and everything inside it will be recursivley symlinked to `~/.config`.
+Run `just` to apply the config.
+
+```sh
+just
+```
+
+See the [justfile](justfile) for full list of available commands.
+
+By default Stow will symlink the contents of the `stow` directory to `$HOME`, so the directory structure should mirror the structure you want in that directory.
 
 ## zsh
 
 ### Local config
 
-A `.local.zsh` file can be placed in the `zsh` directory to add local shell config.
+A `local.zsh` file can be placed in the `stow/dot-config/zsh` directory to add local shell config.
 
 ### Plugin management
 

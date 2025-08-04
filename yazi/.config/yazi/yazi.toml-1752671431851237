@@ -1,8 +1,0 @@
-[manager]
-show_hidden = true
-scrolloff = 10
-
-[opener]
-edit = [
-  {run = 'code "$@"', block = true, desc = "Edit file"}
-]
