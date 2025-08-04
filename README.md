@@ -39,6 +39,12 @@ Create a `.env` from the `example.env` file in the root of the repo and set the 
 cp example.env .env
 ```
 
+Init the submodule for the desired machine.
+
+```sh
+git submodule update --init machine-dir
+```
+
 Run `just` to apply the config.
 
 ```sh
