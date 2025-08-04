@@ -1,3 +1,6 @@
 [submodule "taillight"]
 	path = taillight
 	url = git@github.com:matthew-vance/dotfiles-taillight.git
+[submodule "matthew"]
+	path = matthew
+	url = git@github.com:matthew-vance/dotfiles-matthew.git
