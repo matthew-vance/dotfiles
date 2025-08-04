@@ -71,10 +71,6 @@ To update plugins and the plugin manager, run:
 antidote update
 ```
 
-## git
-
-Run `./configure-git.sh` to set up the git config.
-
 ## fonts
 
 [JetBrains Mono](https://www.jetbrains.com/lp/mono/) is the primary font. You need the vanilla version and [the nerd font version](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono).
