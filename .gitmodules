@@ -1,0 +1,3 @@
+[submodule "taillight"]
+	path = taillight
+	url = git@github.com:matthew-vance/dotfiles-taillight.git
