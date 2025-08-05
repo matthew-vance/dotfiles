@@ -6,11 +6,6 @@ _tmp/
 .tmp/
 .env
 
-# zsh
-.zsh_plugins.zsh
-.zcompdump
-.zsh_sessions
-
 # vscode
 .vscode/*
 !.vscode/settings.json
