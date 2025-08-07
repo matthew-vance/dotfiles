@@ -33,9 +33,9 @@ alias vim="nvim"
 
 alias ip="curl -s https://icanhazip.com; echo"
 
-alias ls='eza --color=auto'
+alias ls='eza --oneline --classify --color=automatic --icons --time-style=long-iso --group-directories-first'
 alias la='ls --all'
-alias ll='ls --all --long --header --classify=auto'
+alias ll='ls --all --long --header --binary'
 alias sl="ls"
 
 alias lg="lazygit"
