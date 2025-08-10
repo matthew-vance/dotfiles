@@ -2,15 +2,14 @@
 
 set -o errexit
 set -o nounset
-set -o pipefail
 
 script_dir=$(dirname "$0")
 local_dir="$script_dir/local"
 dotenv_file="$script_dir/.env"
 
 ensure_cmd() {
-  local cmd="$1"
-  local brew_pkg="${2:-$cmd}"
+  cmd="$1"
+  brew_pkg="${2:-$cmd}"
 
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "$cmd is not installed. Installing with Homebrew..."

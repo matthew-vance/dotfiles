@@ -1,48 +1,62 @@
 return {
-  {
-    "ibhagwan/fzf-lua",
-    event = { "VeryLazy" },
-    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons" },
-    opts = function()
-      local actions = require("fzf-lua.actions")
-      return {
-        defaults = {
-          git_icons = true,
-          file_icons = true,
-          color_icons = true,
-          formatter = "path.filename_first",
-        },
-        grep = {
-          actions = {
-            ["ctrl-G"] = { actions.grep_lgrep },
-            ["ctrl-g"] = { actions.toggle_ignore },
-            ["ctrl-h"] = { actions.toggle_hidden },
-          },
-        },
-      }
-    end,
-    keys = function()
-      local fzf = require("fzf-lua")
-      return {
-        -- files
-        { "<leader><space>", fzf.files, desc = "Find files" },
-        { "<leader>ff", fzf.files, desc = "Find files" },
-        { "<leader>fr", fzf.oldfiles, desc = "Find recent files" },
+	{
+		"ibhagwan/fzf-lua",
+		dependencies = { "echasnovski/mini.icons" },
+		opts = {},
+		config = function(_, opts)
+			local fzf = require("fzf-lua")
+			fzf.setup(opts)
+			fzf.register_ui_select()
+		end,
+		keys = function()
+			local fzf = require("fzf-lua")
+			local recent_files = function()
+				fzf.combine({ pickers = "oldfiles,files" })
+			end
 
-        -- buffers
-        { "<leader>,", fzf.buffers, desc = "Find buffers" },
-        { "<leader>fb", fzf.buffers, desc = "Find buffers" },
+			local smart_pick_buffer = function()
+				local current = vim.api.nvim_get_current_buf()
+				local listed = {}
+				for _, b in ipairs(vim.api.nvim_list_bufs()) do
+					if vim.fn.buflisted(b) == 1 and vim.api.nvim_buf_is_valid(b) then
+						local bt = vim.bo[b].buftype
+						local name = vim.api.nvim_buf_get_name(b)
+						if bt == "" and name ~= "" then
+							table.insert(listed, b)
+						end
+					end
+				end
 
-        -- search
-        { "<leader>/", fzf.live_grep, desc = "Search text" },
-        { "<leader>st", fzf.live_grep, desc = "Search text" },
-        { "<leader>sw", fzf.grep_cword, desc = "Search for word under cursor" },
-        { '<leader>s"', fzf.registers, desc = "Search registers" },
+				if #listed <= 1 then
+					recent_files()
+					return
+				end
 
-        -- git
-        { "<leader>gc", fzf.git_commits, desc = "Git commits" },
-        { "<leader>gs", fzf.git_status, desc = "Git status" },
-      }
-    end,
-  },
+				if #listed == 2 then
+					local target = (listed[1] == current) and listed[2] or listed[1]
+					if target ~= current then
+						vim.cmd("buffer " .. target)
+					else
+						recent_files()
+					end
+					return
+				end
+
+				fzf.buffers()
+			end
+			return {
+				{ "<leader>ff", fzf.files, desc = "Find Files" },
+				{ "<leader>fr", fzf.oldfiles, desc = "Open Recent File" },
+				{ "<leader>fg", fzf.live_grep_native, desc = "Live Grep" },
+				{ "<leader>fb", fzf.buffers, desc = "Open Buffer" },
+				{ "<leader>fg", fzf.global, desc = "Global Find" },
+				{ "<leader><leader>", smart_pick_buffer, desc = "Smart Open Buffer" },
+				{ "<leader>fh", fzf.help_tags, desc = "Help Tags" },
+				{ "<leader>fw", fzf.grep_cword, desc = "Grep Word Under Cursor" },
+				{ "<leader>fk", fzf.keymaps, desc = "Find Keymaps" },
+				{ "<leader>gf", fzf.git_files, desc = "Git Files" },
+				{ "<leader>gs", fzf.git_status, desc = "Git Status" },
+			}
+		end,
+	},
 }

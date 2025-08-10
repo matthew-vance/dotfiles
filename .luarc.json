@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "Lua": {
+    "diagnostics": {
+      "globals": [
+        "vim"
+      ]
+    },
+    "workspace": {
+      "checkThirdParty": false,
+      "library": [
+        "$HOME/.local/share/nvim/lazy"
+      ]
+    },
+    "telemetry": {
+      "enable": false
+    }
+  }
+}
