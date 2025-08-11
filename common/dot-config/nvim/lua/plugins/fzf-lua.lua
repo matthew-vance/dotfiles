@@ -1,48 +1,49 @@
 return {
-  {
-    "ibhagwan/fzf-lua",
-    event = { "VeryLazy" },
-    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons" },
-    opts = function()
-      local actions = require("fzf-lua.actions")
-      return {
-        defaults = {
-          git_icons = true,
-          file_icons = true,
-          color_icons = true,
-          formatter = "path.filename_first",
-        },
-        grep = {
-          actions = {
-            ["ctrl-G"] = { actions.grep_lgrep },
-            ["ctrl-g"] = { actions.toggle_ignore },
-            ["ctrl-h"] = { actions.toggle_hidden },
-          },
-        },
-      }
-    end,
-    keys = function()
-      local fzf = require("fzf-lua")
-      return {
-        -- files
-        { "<leader><space>", fzf.files, desc = "Find files" },
-        { "<leader>ff", fzf.files, desc = "Find files" },
-        { "<leader>fr", fzf.oldfiles, desc = "Find recent files" },
-
-        -- buffers
-        { "<leader>,", fzf.buffers, desc = "Find buffers" },
-        { "<leader>fb", fzf.buffers, desc = "Find buffers" },
-
-        -- search
-        { "<leader>/", fzf.live_grep, desc = "Search text" },
-        { "<leader>st", fzf.live_grep, desc = "Search text" },
-        { "<leader>sw", fzf.grep_cword, desc = "Search for word under cursor" },
-        { '<leader>s"', fzf.registers, desc = "Search registers" },
-
-        -- git
-        { "<leader>gc", fzf.git_commits, desc = "Git commits" },
-        { "<leader>gs", fzf.git_status, desc = "Git status" },
-      }
-    end,
-  },
+  "ibhagwan/fzf-lua",
+  dependencies = { "echasnovski/mini.icons" },
+  opts = {},
+  config = function(_, opts)
+    local fzf = require("fzf-lua")
+    fzf.register_ui_select()
+    fzf.setup(opts)
+  end,
+  keys = function()
+    local fzf = require("fzf-lua")
+    return {
+      {
+        "<leader>ff",
+        fzf.files,
+        desc = "[F]ind [F]iles",
+      },
+      {
+        "<leader>faf",
+        function()
+          fzf.files({ hidden = true, no_ignore = true })
+        end,
+        desc = "[F]ind [A]ll [F]iles",
+      },
+      { "<leader>fr", fzf.oldfiles, desc = "[F]ind [R]ecent files" },
+      { "<leader>fb", fzf.buffers, desc = "[F]ind [B]uffer" },
+      {
+        "<leader>fic",
+        fzf.lgrep_curbuf,
+        desc = "[F]ind [I]n [C]urrent buffer",
+      },
+      {
+        "<leader>fw",
+        fzf.grep_cword,
+        desc = "[F]ind [W]ord under cursor",
+      },
+      { "<leader>fR", fzf.resume, desc = "[F]ind [R]esume" },
+      { "<leader>fh", fzf.helptags, desc = "[F]ind [H]elp" },
+      { "<leader>fk", fzf.keymaps, desc = "[F]ind [K]eymaps" },
+      {
+        "<leader>fs",
+        function()
+          fzf.live_grep_native({ hidden = true })
+        end,
+        desc = "[F]ind [S]tring in current directory",
+      },
+    }
+  end,
 }

@@ -2,7 +2,7 @@ local o = vim.opt
 
 -- line numbers
 o.number = true
-o.relativenumber = true
+-- o.relativenumber = true
 
 -- tabs & indetation
 o.tabstop = 2
@@ -10,6 +10,7 @@ o.softtabstop = 2
 o.shiftwidth = 2
 o.expandtab = true
 o.smartindent = true
+o.breakindent = true
 
 -- undo
 o.swapfile = false
@@ -26,7 +27,9 @@ o.infercase = true
 o.smartcase = true
 
 -- clipboard
-o.clipboard:append("unnamedplus")
+vim.schedule(function()
+  o.clipboard = "unnamedplus"
+end)
 
 -- ui
 o.termguicolors = true
@@ -35,6 +38,8 @@ o.splitbelow = true
 o.splitright = true
 o.wrap = false
 o.breakindent = true
+o.inccommand = "split"
+o.confirm = true
 
 -- misc
 o.scrolloff = 10
@@ -42,3 +47,4 @@ o.signcolumn = "yes"
 o.updatetime = 50
 o.colorcolumn = "80,100,120"
 o.autoread = true
+o.mouse = "a"
