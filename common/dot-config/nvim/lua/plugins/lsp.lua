@@ -26,6 +26,7 @@ return {
 				"dockerls",
 				"eslint",
 				"golangci_lint_ls",
+				"jsonls",
 				"just",
 				"lua_ls",
 				"gopls",
@@ -68,10 +69,10 @@ return {
 					map("gi", fzf.lsp_implementations, "Go to Implementation")
 					map("K", vim.lsp.buf.hover, "Hover Documentation")
 					map("<C-k>", vim.lsp.buf.signature_help, "Signature Help")
-					map("<leader>ds", fzf.lsp_document_symbols, "Document Symbols")
-					map("<leader>ws", fzf.lsp_workspace_symbols, "Workspace Symbols")
+					map("<leader>sd", fzf.lsp_document_symbols, "Document Symbols")
+					map("<leader>sw", fzf.lsp_workspace_symbols, "Workspace Symbols")
 					map("<leader>dd", fzf.diagnostics_document, "Document Diagnostics")
-					map("<leader>wd", fzf.diagnostics_workspace, "Workspace Diagnostics")
+					map("<leader>dw", fzf.diagnostics_workspace, "Workspace Diagnostics")
 				end,
 			})
 		end,

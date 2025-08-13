@@ -47,6 +47,7 @@ return {
 			return {
 				{ "<leader>ff", fzf.files, desc = "Find Files" },
 				{ "<leader>fr", fzf.oldfiles, desc = "Open Recent File" },
+				{ "<leader>fR", fzf.resume, desc = "Resume previous search" },
 				{ "<leader>fg", fzf.live_grep_native, desc = "Live Grep" },
 				{ "<leader>fb", fzf.buffers, desc = "Open Buffer" },
 				{ "<leader>fj", fzf.jumps, desc = "Find Jumps" },

@@ -9,7 +9,7 @@ map("n", "<leader>q", ":quit<CR>", { desc = "Quit" })
 map("n", "<esc>", function()
 	vim.cmd("nohlsearch")
 end, { desc = "Clear highlights" })
-map({ "i", "v" }, "jk", "<Esc>", { desc = "Go to normal mode" })
+map({ "i", "v" }, "jk", "<Esc>", { desc = "Exit to normal mode" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
@@ -25,15 +25,17 @@ end, { desc = "Close buffer and switch" })
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.mouse = "a"
-vim.opt.clipboard:append("unnamedplus")
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
+vim.opt.breakindent = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 200
+vim.opt.updatetime = 50
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.ignorecase = true
@@ -44,7 +46,9 @@ vim.opt.incsearch = true
 vim.opt.confirm = true
 vim.opt.colorcolumn = "80,100,120"
 vim.opt.autoread = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 999
 vim.opt.cursorline = true
+vim.opt.inccommand = "split"
+vim.opt.mouse = ""
 
 require("config.lazy")
