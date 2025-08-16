@@ -1,0 +1,51 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+local opt = vim.opt
+
+opt.autoread = true
+opt.backup = false
+vim.schedule(function()
+	opt.clipboard = "unnamedplus"
+end)
+opt.colorcolumn = "80,100,120"
+opt.completeopt = "menu,menuone,noselect"
+opt.confirm = true
+opt.cursorline = true
+opt.expandtab = true
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.hlsearch = false
+opt.ignorecase = true
+opt.inccommand = "nosplit"
+opt.incsearch = true
+opt.laststatus = 3
+opt.list = true
+opt.mouse = ""
+opt.number = true
+opt.numberwidth = 2
+opt.pumheight = 10
+opt.relativenumber = true
+opt.scrolloff = 10
+opt.shiftwidth = 2
+opt.showmode = false
+opt.sidescrolloff = 8
+opt.signcolumn = "yes"
+opt.smartcase = true
+opt.smartindent = true
+opt.splitbelow = true
+opt.splitright = true
+opt.tabstop = 2
+opt.termguicolors = true
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200
+opt.winborder = "rounded"
+opt.wrap = false
+opt.writebackup = false
+opt.swapfile = false
