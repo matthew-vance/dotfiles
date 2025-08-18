@@ -13,6 +13,7 @@ return {
 				"astro",
 				"bash",
 				"c",
+				"comment",
 				"css",
 				"diff",
 				"dockerfile",
@@ -30,8 +31,11 @@ return {
 				"sql",
 				"svelte",
 				"terraform",
+				"toml",
 				"vim",
 				"vimdoc",
+				"xml",
+				"yaml",
 			}
 
 			local all_parsers = lang_utils.merge_arrays_unique(base_parsers, lang_parsers)
