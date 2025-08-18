@@ -26,8 +26,13 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		dependencies = { "mason-org/mason.nvim", "mason-org/mason-lspconfig.nvim" },
 		event = "VeryLazy",
-		opts = {
-			ensure_installed = {
+		opts = function()
+			-- Load language-specific servers
+			local lang_utils = require("utils.lang")
+			local lang_servers = lang_utils.get_lsp_servers()
+
+			-- Base servers (languages not yet migrated)
+			local base_servers = {
 				"astro",
 				"bashls",
 				"cssls",
@@ -37,24 +42,31 @@ return {
 				"gopls",
 				"html",
 				"jsonls",
-				"lua_ls",
 				"marksman",
 				"svelte",
 				"tailwindcss",
 				"terraform",
 				"ts_ls",
 				"yamlls",
-				-- Formatters / linters / extras
-				"markdownlint",
-				"prettierd",
-				"shfmt",
-				"stylua",
-				"yamllint",
-			},
-			auto_update = false,
-			run_on_start = true,
-			start_delay = 2000,
-		},
+			}
+
+			-- Merge with language servers
+			local all_servers = lang_utils.merge_arrays(base_servers, lang_servers)
+
+			return {
+				ensure_installed = vim.list_extend(all_servers, {
+					-- Formatters / linters / extras
+					"markdownlint",
+					"prettierd",
+					"shfmt",
+					"stylua",
+					"yamllint",
+				}),
+				auto_update = false,
+				run_on_start = true,
+				start_delay = 2000,
+			}
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -73,7 +85,12 @@ return {
 				severity_sort = true,
 			})
 
-			local servers = {
+			-- Load language-specific configs
+			local lang_utils = require("utils.lang")
+			local lang_configs = lang_utils.get_lsp_configs()
+
+			-- Define base servers (languages not yet migrated to lang/ files)
+			local base_servers = {
 				astro = {},
 				bashls = {},
 				cssls = {},
@@ -85,13 +102,6 @@ return {
 				},
 				html = {},
 				jsonls = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							telemetry = { enable = false },
-						},
-					},
-				},
 				marksman = {},
 				svelte = {},
 				tailwindcss = {},
@@ -99,6 +109,9 @@ return {
 				ts_ls = {},
 				yamlls = {},
 			}
+
+			-- Merge language configs with base servers (language configs take precedence)
+			local servers = lang_utils.merge_tables(base_servers, lang_configs)
 
 			for server, config in pairs(servers) do
 				vim.lsp.config(server, config)

@@ -4,26 +4,37 @@ return {
 		lazy = true,
 		event = { "BufReadPre" },
 		cmd = "ConformInfo",
-		opts = {
-			default_format_opts = {
-				lsp_format = "fallback",
-			},
-			formatters_by_ft = {
+		opts = function()
+			-- Load language-specific formatters
+			local lang_utils = require("utils.lang")
+			local lang_formatters = lang_utils.get_formatters()
+
+			-- Base formatters (languages not yet migrated)
+			local base_formatters = {
 				astro = { "prettierd" },
 				css = { "prettierd" },
 				html = { "prettierd" },
 				javascript = { "prettierd" },
 				json = { "prettierd" },
-				lua = { "stylua" },
 				sh = { "shfmt" },
 				svelte = { "prettierd" },
 				typescript = { "prettierd" },
 				yaml = { "prettierd" },
-			},
-			format_on_save = {
-				timeout_ms = 500,
-			},
-		},
+			}
+
+			-- Merge with language formatters (language configs take precedence)
+			local all_formatters = lang_utils.merge_tables(base_formatters, lang_formatters)
+
+			return {
+				default_format_opts = {
+					lsp_format = "fallback",
+				},
+				formatters_by_ft = all_formatters,
+				format_on_save = {
+					timeout_ms = 500,
+				},
+			}
+		end,
 		keys = function()
 			return {
 				{
