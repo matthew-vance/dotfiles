@@ -21,4 +21,3 @@ return {
 		lua = { "stylua" },
 	},
 }
-

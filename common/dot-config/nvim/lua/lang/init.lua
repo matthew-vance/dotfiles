@@ -18,4 +18,3 @@ function M.get_all_configs()
 end
 
 return M
-

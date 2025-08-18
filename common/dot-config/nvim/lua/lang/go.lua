@@ -20,4 +20,3 @@ return {
 	-- Formatters for Go files (gopls handles formatting by default)
 	formatters = {},
 }
-
