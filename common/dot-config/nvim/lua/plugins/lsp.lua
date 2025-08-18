@@ -38,7 +38,6 @@ return {
 				"cssls",
 				"dockerls",
 				"docker_compose_language_service",
-				"gopls",
 				"html",
 				"jsonls",
 				"marksman",
@@ -94,9 +93,6 @@ return {
 				cssls = {},
 				dockerls = {},
 				docker_compose_language_service = {},
-				gopls = {
-					gofumpt = true,
-				},
 				html = {},
 				jsonls = {},
 				marksman = {},
