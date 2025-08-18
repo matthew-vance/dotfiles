@@ -5,11 +5,9 @@ return {
 		event = { "BufReadPre" },
 		cmd = "ConformInfo",
 		opts = function()
-			-- Load language-specific formatters
 			local lang_utils = require("utils.lang")
 			local lang_formatters = lang_utils.get_formatters()
 
-			-- Base formatters (languages not yet migrated)
 			local base_formatters = {
 				astro = { "prettierd" },
 				css = { "prettierd" },
@@ -20,7 +18,6 @@ return {
 				yaml = { "prettierd" },
 			}
 
-			-- Merge with language formatters (language configs take precedence)
 			local all_formatters = lang_utils.merge_tables(base_formatters, lang_formatters)
 
 			return {

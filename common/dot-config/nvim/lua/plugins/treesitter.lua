@@ -6,11 +6,9 @@ return {
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs",
 		opts = function()
-			-- Load language-specific parsers
 			local lang_utils = require("utils.lang")
 			local lang_parsers = lang_utils.get_treesitter_parsers()
 
-			-- Base parsers (languages not yet migrated)
 			local base_parsers = {
 				"astro",
 				"bash",
@@ -36,7 +34,6 @@ return {
 				"vimdoc",
 			}
 
-			-- Merge with language parsers
 			local all_parsers = lang_utils.merge_arrays(base_parsers, lang_parsers)
 
 			return {
