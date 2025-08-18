@@ -91,9 +91,28 @@ function M.get_formatters()
 	return formatters
 end
 
+-- Get all formatter tools from language configs, safely extracting only tool names
+function M.get_all_formatter_tools()
+	local tools = {}
+	local seen = {}
+
+	-- Get formatters from language configs
+	local lang_formatters = M.get_formatters()
+	for _, formatter_list in pairs(lang_formatters) do
+		for _, item in ipairs(formatter_list) do
+			-- Only add strings (tool names), skip key-value options like stop_at_first = true
+			if type(item) == "string" and not seen[item] then
+				table.insert(tools, item)
+				seen[item] = true
+			end
+		end
+	end
+
+	return tools
+end
+
 -- Delegate to generic utils
 M.merge_tables = utils.merge_tables
-M.merge_arrays = utils.merge_arrays
+M.merge_arrays_unique = utils.merge_arrays_unique
 
 return M
-

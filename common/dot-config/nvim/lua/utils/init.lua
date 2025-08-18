@@ -17,22 +17,28 @@ function M.merge_tables(t1, t2)
 	return result
 end
 
--- Merge arrays
-function M.merge_arrays(arr1, arr2)
+-- Merge arrays with deduplication
+function M.merge_arrays_unique(arr1, arr2)
 	local result = {}
+	local seen = {}
 
 	-- Add all elements from first array
 	for _, v in ipairs(arr1) do
-		table.insert(result, v)
+		if not seen[v] then
+			table.insert(result, v)
+			seen[v] = true
+		end
 	end
 
 	-- Add all elements from second array
 	for _, v in ipairs(arr2) do
-		table.insert(result, v)
+		if not seen[v] then
+			table.insert(result, v)
+			seen[v] = true
+		end
 	end
 
 	return result
 end
 
 return M
-

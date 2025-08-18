@@ -34,7 +34,7 @@ return {
 				"vimdoc",
 			}
 
-			local all_parsers = lang_utils.merge_arrays(base_parsers, lang_parsers)
+			local all_parsers = lang_utils.merge_arrays_unique(base_parsers, lang_parsers)
 
 			return {
 				ensure_installed = all_parsers,
