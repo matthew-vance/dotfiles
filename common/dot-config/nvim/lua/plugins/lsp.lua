@@ -38,7 +38,6 @@ return {
 				"cssls",
 				"dockerls",
 				"docker_compose_language_service",
-				"eslint-lsp",
 				"gopls",
 				"html",
 				"jsonls",
@@ -46,7 +45,6 @@ return {
 				"svelte",
 				"tailwindcss",
 				"terraform",
-				"ts_ls",
 				"yamlls",
 			}
 
@@ -96,7 +94,6 @@ return {
 				cssls = {},
 				dockerls = {},
 				docker_compose_language_service = {},
-				["eslint-lsp"] = {},
 				gopls = {
 					gofumpt = true,
 				},
@@ -106,7 +103,6 @@ return {
 				svelte = {},
 				tailwindcss = {},
 				terraform = {},
-				ts_ls = {},
 				yamlls = {},
 			}
 

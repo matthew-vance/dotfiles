@@ -14,11 +14,9 @@ return {
 				astro = { "prettierd" },
 				css = { "prettierd" },
 				html = { "prettierd" },
-				javascript = { "prettierd" },
 				json = { "prettierd" },
 				sh = { "shfmt" },
 				svelte = { "prettierd" },
-				typescript = { "prettierd" },
 				yaml = { "prettierd" },
 			}
 

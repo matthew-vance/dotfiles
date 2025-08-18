@@ -24,7 +24,6 @@ return {
 				"gosum",
 				"hcl",
 				"html",
-				"javascript",
 				"json",
 				"jsonc",
 				"just",
@@ -36,8 +35,6 @@ return {
 				"sql",
 				"svelte",
 				"terraform",
-				"tsx",
-				"typescript",
 				"vim",
 				"vimdoc",
 			}
