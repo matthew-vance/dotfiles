@@ -47,35 +47,11 @@ return {
 
 			local all_servers = lang_utils.merge_arrays_unique(base_servers, lang_servers)
 
-			-- Extract formatters from language configs
 			local lang_formatter_tools = lang_utils.get_all_formatter_tools()
+			local base_formatter_tools = lang_utils.get_base_formatter_tools()
 
-			-- Base formatters (extract tools from base formatter configs)
-			local base_formatters = {
-				astro = { "prettierd" },
-				css = { "prettierd" },
-				html = { "prettierd" },
-				json = { "prettierd" },
-				sh = { "shfmt" },
-				svelte = { "prettierd" },
-				yaml = { "prettierd" },
-			}
-
-			local base_formatter_tools = {}
-			local seen_formatters = {}
-			for _, formatter_list in pairs(base_formatters) do
-				for _, item in ipairs(formatter_list) do
-					if type(item) == "string" and not seen_formatters[item] then
-						table.insert(base_formatter_tools, item)
-						seen_formatters[item] = true
-					end
-				end
-			end
-
-			-- Combine all formatter tools (with deduplication)
 			local all_formatter_tools = lang_utils.merge_arrays_unique(base_formatter_tools, lang_formatter_tools)
 
-			-- Additional tools (linters, etc.)
 			local additional_tools = {
 				"markdownlint",
 				"yamllint",

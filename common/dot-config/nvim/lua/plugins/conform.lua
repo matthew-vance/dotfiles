@@ -7,16 +7,7 @@ return {
 		opts = function()
 			local lang_utils = require("utils.lang")
 			local lang_formatters = lang_utils.get_formatters()
-
-			local base_formatters = {
-				astro = { "prettierd" },
-				css = { "prettierd" },
-				html = { "prettierd" },
-				json = { "prettierd" },
-				sh = { "shfmt" },
-				svelte = { "prettierd" },
-				yaml = { "prettierd" },
-			}
+			local base_formatters = lang_utils.get_base_formatters()
 
 			local all_formatters = lang_utils.merge_tables(base_formatters, lang_formatters)
 

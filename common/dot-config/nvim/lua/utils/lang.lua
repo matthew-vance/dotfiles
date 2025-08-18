@@ -1,17 +1,14 @@
 local utils = require("utils")
 local M = {}
 
--- Collect all language configurations
 function M.get_all_configs()
 	local configs = {}
 	local lang_path = vim.fn.stdpath("config") .. "/lua/lang"
 
-	-- Check if lang directory exists
 	if vim.fn.isdirectory(lang_path) == 0 then
 		return configs
 	end
 
-	-- Get all lua files in lang directory except init.lua
 	local files = vim.fn.glob(lang_path .. "/*.lua", false, true)
 
 	for _, file in ipairs(files) do
@@ -27,7 +24,6 @@ function M.get_all_configs()
 	return configs
 end
 
--- Get LSP servers from all language configs
 function M.get_lsp_servers()
 	local servers = {}
 	local configs = M.get_all_configs()
@@ -43,7 +39,6 @@ function M.get_lsp_servers()
 	return servers
 end
 
--- Get LSP server configurations from all language configs
 function M.get_lsp_configs()
 	local lsp_configs = {}
 	local configs = M.get_all_configs()
@@ -59,7 +54,6 @@ function M.get_lsp_configs()
 	return lsp_configs
 end
 
--- Get treesitter parsers from all language configs
 function M.get_treesitter_parsers()
 	local parsers = {}
 	local configs = M.get_all_configs()
@@ -75,7 +69,6 @@ function M.get_treesitter_parsers()
 	return parsers
 end
 
--- Get formatters from all language configs
 function M.get_formatters()
 	local formatters = {}
 	local configs = M.get_all_configs()
@@ -91,16 +84,25 @@ function M.get_formatters()
 	return formatters
 end
 
--- Get all formatter tools from language configs, safely extracting only tool names
+function M.get_base_formatters()
+	return {
+		astro = { "prettierd" },
+		css = { "prettierd" },
+		html = { "prettierd" },
+		json = { "prettierd" },
+		sh = { "shfmt" },
+		svelte = { "prettierd" },
+		yaml = { "prettierd" },
+	}
+end
+
 function M.get_all_formatter_tools()
 	local tools = {}
 	local seen = {}
 
-	-- Get formatters from language configs
 	local lang_formatters = M.get_formatters()
 	for _, formatter_list in pairs(lang_formatters) do
 		for _, item in ipairs(formatter_list) do
-			-- Only add strings (tool names), skip key-value options like stop_at_first = true
 			if type(item) == "string" and not seen[item] then
 				table.insert(tools, item)
 				seen[item] = true
@@ -111,7 +113,23 @@ function M.get_all_formatter_tools()
 	return tools
 end
 
--- Delegate to generic utils
+function M.get_base_formatter_tools()
+	local tools = {}
+	local seen = {}
+
+	local base_formatters = M.get_base_formatters()
+	for _, formatter_list in pairs(base_formatters) do
+		for _, item in ipairs(formatter_list) do
+			if type(item) == "string" and not seen[item] then
+				table.insert(tools, item)
+				seen[item] = true
+			end
+		end
+	end
+
+	return tools
+end
+
 M.merge_tables = utils.merge_tables
 M.merge_arrays_unique = utils.merge_arrays_unique
 
