@@ -16,7 +16,7 @@ return {
 			words = { enabled = true },
 		},
 		keys = function()
-			-- stylua: ignore start
+		-- stylua: ignore start
       return {
         { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
         { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
