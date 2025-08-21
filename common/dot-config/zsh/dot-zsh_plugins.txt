@@ -11,9 +11,6 @@ $ZDOTDIR/fzf.zsh
 $ZDOTDIR/bat.zsh
 $ZDOTDIR/javascript.zsh
 $ZDOTDIR/go.zsh
-$ZDOTDIR/python.zsh
-$ZDOTDIR/ruby.zsh
-$ZDOTDIR/rust.zsh
 davidde/git
 romkatv/zsh-bench kind:path
 

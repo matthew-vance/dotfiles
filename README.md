@@ -19,9 +19,7 @@ This whole thing basically works by mirroring the layout of the home directory a
 
 ## Optional
 
-- `fnm` if using node
-- `pyenv` if using python
-- `rbenv` if using ruby
+- `fnm`
 - `lazygit`
 - `lazydocker`
 
@@ -78,17 +76,20 @@ antidote update
 The Neovim configuration uses a hybrid approach for managing language-specific settings (LSP, treesitter, formatters):
 
 **Philosophy:**
+
 - **Complex languages** get individual configuration files in `lua/lang/`
 - **Simple languages** remain in centralized base configurations
 - **Modular when it matters** - separate files only when there are specific settings, multiple related tools, or configuration complexity
 
 **When to create individual language files:**
+
 - Language has custom LSP settings (like Lua's `telemetry = false`)
 - Multiple related languages share tooling (TypeScript + JavaScript)
 - Language requires specific configuration (Go's `gofumpt = true`)
 - Language has unique formatter or parser requirements
 
 **When to leave in base configs:**
+
 - LSP server has empty configuration `{}`
 - Formatter is a simple one-liner assignment
 - Treesitter parser requires no special setup
@@ -99,36 +100,38 @@ To add a new language-specific configuration:
 
 1. **Create the language file** at `lua/lang/{language}.lua`:
 
-```lua
-return {
-  -- LSP server configurations (keys are server names to install)
-  lsp = {
-    server_name = {
-      settings = {
-        -- LSP-specific settings
-      },
-    },
-  },
+   ```lua
+   return {
+     -- LSP server configurations (keys are server names to install)
+     lsp = {
+       server_name = {
+         settings = {
+           -- LSP-specific settings
+         },
+       },
+     },
 
-  -- Treesitter parsers
-  treesitter = {
-    "parser1",
-    "parser2",
-  },
+     -- Treesitter parsers
+     treesitter = {
+       "parser1",
+       "parser2",
+     },
 
-  -- Formatters by filetype
-  formatters = {
-    filetype = { "formatter_name" },
-  },
-}
-```
+     -- Formatters by filetype
+     formatters = {
+       filetype = { "formatter_name" },
+     },
+   }
+   ```
 
-2. **Remove from base configs** (only if the language was previously configured there) - Remove the language's LSP servers, parsers, and formatters from:
+1. **Remove from base configs** (only if the language was previously configured there) - Remove the language's LSP servers, parsers, and formatters from:
+
    - `lua/plugins/lsp.lua` (base_servers arrays)
    - `lua/plugins/treesitter.lua` (base_parsers array)
    - `lua/plugins/conform.lua` (base_formatters table)
 
-3. **Run symlink command** to apply changes:
+1. **Run symlink command** to apply changes:
+
 ```sh
 just
 ```

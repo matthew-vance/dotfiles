@@ -12,8 +12,6 @@ antidote load
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# after compinit
-
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
 
