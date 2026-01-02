@@ -5,6 +5,8 @@ export SAVEHIST=50000
 export ANTIDOTE_DIR=${HOME}/.antidote
 export ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh
 
+export PATH=${PATH}:${HOME}/.local/bin
+
 # 2. Options
 
 # History options
@@ -138,6 +140,7 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(docker completion zsh)"
 eval "$(op completion zsh)"
+eval "$(register-python-argcomplete pipx)"
 
 # 9. Prompt
 eval "$(starship init zsh)"
