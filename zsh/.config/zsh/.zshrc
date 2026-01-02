@@ -140,7 +140,8 @@ command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)"
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
 command -v docker >/dev/null 2>&1 && eval "$(docker completion zsh)"
 command -v op >/dev/null 2>&1 && eval "$(op completion zsh)"
-command -v register-python-argcomplete >/dev/null 2>&1 && eval "$(register-python-argcomplete pipx)"
+command -v uv >/dev/null 2>&1 && eval "$(uv generate-shell-completion zsh)"
+command -v uvx >/dev/null 2>&1 && eval "$(uvx --generate-shell-completion zsh)"
 
 # 9. Prompt
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
