@@ -54,4 +54,6 @@ else
     echo "just is already installed."
 fi
 
+just stow zsh
 echo "Bootstrap completed successfully."
+echo "You may need to logout and log back in for the shell change to take effect."
