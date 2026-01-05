@@ -147,3 +147,6 @@ command -v uvx >/dev/null 2>&1 && eval "$(uvx --generate-shell-completion zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # 10. Local overrides
+if [ -f "${ZDOTDIR}/local.zshrc" ]; then
+    source "${ZDOTDIR}/local.zshrc"
+fi
