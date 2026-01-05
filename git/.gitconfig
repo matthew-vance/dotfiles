@@ -1,0 +1,20 @@
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[include]
+    path = ~/.config/git/config.local
+[core]
+	pager = delta --line-numbers
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+[merge]
+	conflictStyle = diff3
+[diff]
+	colorMoved = default
+[pull]
+	rebase = false
