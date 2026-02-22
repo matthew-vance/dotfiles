@@ -6,8 +6,6 @@
 	autoSetupRemote = true
 [init]
 	defaultBranch = main
-[include]
-    path = ~/.config/git/config.local
 [core]
 	pager = delta --line-numbers
 [interactive]
@@ -18,3 +16,8 @@
 	colorMoved = default
 [pull]
 	rebase = false
+[user]
+	name = Matthew Vance
+	email = mavance44@gmail.com
+[include]
+	path = ~/.config/git/config.local
