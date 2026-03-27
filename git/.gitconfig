@@ -7,8 +7,6 @@
 [init]
 	defaultBranch = main
 	templatedir = ~/.git-templates
-[include]
-    path = ~/.config/git/config.local
 [core]
 	pager = delta --line-numbers
 [interactive]
@@ -19,3 +17,5 @@
 	colorMoved = default
 [pull]
 	rebase = false
+[include]
+	path = ~/.config/git/config.local

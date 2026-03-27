@@ -6,6 +6,7 @@ export ANTIDOTE_DIR=${HOME}/.antidote
 export ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh
 
 export PATH=${PATH}:${HOME}/.local/bin
+export PATH=${HOME}/go/bin:${PATH}
 
 # 2. Options
 
@@ -136,6 +137,7 @@ alias now='date +"%T"'
 alias tf="terraform"
 
 # 8. Tool init
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)"
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
 command -v docker >/dev/null 2>&1 && eval "$(docker completion zsh)"
