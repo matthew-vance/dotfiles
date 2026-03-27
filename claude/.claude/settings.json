@@ -1,0 +1,4 @@
+{
+  "apiKeyHelper": "~/.claude/anthropic_key.sh",
+  "model": "opusplan"
+}

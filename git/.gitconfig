@@ -6,6 +6,7 @@
 	autoSetupRemote = true
 [init]
 	defaultBranch = main
+	templatedir = ~/.git-templates
 [include]
     path = ~/.config/git/config.local
 [core]
