@@ -1,4 +1,7 @@
 git:
+  commitPrefix:
+    - pattern: "^\\w+\\/(\\w+-\\d+).*"
+      replace: "[$1] "
   pagers:
     - pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 
