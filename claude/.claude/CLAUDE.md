@@ -70,7 +70,6 @@
 - Branch naming: `type/short-description` (e.g., `feat/add-user-auth`, `fix/login-redirect`).
 - **Small, focused PRs** — one concern per PR.
 - **Git hooks:** projects should have pre-commit hooks that apply formatting fixes. Use **Lefthook** to manage git hooks unless another tool (husky, lint-staged, etc.) is already in place.
-- **Do not** add `Co-Authored-By` or any other attribution for Claude in commit messages.
 
 ## Shell & Task Runners
 
