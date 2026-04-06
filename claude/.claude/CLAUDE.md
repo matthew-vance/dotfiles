@@ -10,7 +10,6 @@
 - **Primary:** TypeScript/JavaScript, Go, Python
 - **Application types:** fullstack web apps, backend API services, CLIs
 - **Infrastructure:** Docker/containerization, Ansible, Terraform
-- **JS/TS package manager:** pnpm
 
 ## Architecture
 
@@ -28,7 +27,7 @@
 - **Follow existing project patterns** — don't override them with these personal preferences. These are defaults for new code and new projects.
 - Follow **idiomatic style for the language** being used. Language-specific preferences below only apply to their respective languages.
 - **Organize by feature/domain** — co-locate related files rather than grouping by layer.
-- Comments only for non-obvious *why*, not *what*. Code should be self-documenting.
+- Comments only for non-obvious _why_, not _what_. Code should be self-documenting.
 - When editing code that doesn't follow these preferences: refactor if trivial, otherwise flag it and move on.
 
 ### TypeScript / JavaScript
@@ -60,6 +59,7 @@
 ## Git & PRs
 
 - Conventional commits: `feat:`, `fix:`, `chore:`, `refactor:`, `test:`, `docs:`, etc.
+- Only commit when asked to.
 - Branch naming: `type/short-description` (e.g., `feat/add-user-auth`, `fix/login-redirect`).
 - **Small, focused PRs** — one concern per PR.
 - **Git hooks:** projects should have pre-commit hooks that apply formatting fixes. Use **Lefthook** to manage git hooks unless another tool (husky, lint-staged, etc.) is already in place.
