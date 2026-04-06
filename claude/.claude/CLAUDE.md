@@ -20,7 +20,6 @@
 ## Development Approach
 
 - **Test-driven development:** write the test first, then make it pass.
-- Write both unit and integration tests.
 - **Prefer real dependencies over mocks** in tests (e.g., testcontainers, in-memory implementations). Only mock when a real dependency is impractical (e.g., third-party paid APIs, irreversible operations).
 - Error handling: handle likely, expected errors explicitly. Let unexpected errors bubble up — don't swallow them silently.
 
@@ -40,22 +39,17 @@
 - Prefer `type` over `interface` — use `interface` only when declaration merging or `extends` is needed.
 - **No enums** — use `as const` objects with union types instead.
 - **async/await always** — no `.then()` chains.
-- Formatting: Prettier + ESLint (or whatever the project has configured).
 
 ### Go
 
 - **Idiomatic Go error handling** — `if err != nil`, wrap with `fmt.Errorf` / `errors.Join`.
 - **Define interfaces at the consumer**, not alongside the implementation.
-- **Flat project structure** — keep it flat until complexity forces new packages. Avoid premature `pkg/` or `internal/`.
-- **Channels + goroutines** for concurrency coordination.
 - **Standard library `testing` package** with table-driven tests — no test frameworks.
 
 ### Python
 
 - **Always type-hint** — all function signatures, return types, and key variables.
 - **Dataclasses + functions** — use dataclasses/NamedTuples for data, plain functions for behavior. Avoid class-heavy OOP.
-- **uv** for package and dependency management.
-- **pytest** for testing (fixtures, parametrize).
 
 ## Dependencies & Changes
 
@@ -66,7 +60,6 @@
 ## Git & PRs
 
 - Conventional commits: `feat:`, `fix:`, `chore:`, `refactor:`, `test:`, `docs:`, etc.
-- Sign all commits (SSH signing is configured globally).
 - Branch naming: `type/short-description` (e.g., `feat/add-user-auth`, `fix/login-redirect`).
 - **Small, focused PRs** — one concern per PR.
 - **Git hooks:** projects should have pre-commit hooks that apply formatting fixes. Use **Lefthook** to manage git hooks unless another tool (husky, lint-staged, etc.) is already in place.
@@ -81,4 +74,4 @@
 
 ## Security
 
-- Proactively flag security concerns even when unrelated to the current task. Don't fix them silently — raise them.
+- Proactively flag security concerns **even when unrelated to the current task**. Don't fix them silently — raise them.
