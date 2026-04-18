@@ -30,6 +30,7 @@ just stow ssh
 just stow starship
 just stow ghostty
 just stow lazygit
+just stow nvim
 ```
 
 To unlink a package:
@@ -48,6 +49,7 @@ just unstow <package>
 | `starship` | `starship.toml`                           |
 | `ghostty`  | Ghostty terminal config                   |
 | `lazygit`  | lazygit config with delta and Catppuccin  |
+| `nvim`     | Neovim config (vim.pack, Lua)             |
 
 ## Local overrides
 
