@@ -6,6 +6,7 @@ vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/stevearc/conform.nvim",
+	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") },
 })
 
 -- Load order matters: mini.icons must be set up before oil reads it.
@@ -14,3 +15,4 @@ require("plugins.catppuccin")
 require("plugins.oil")
 require("plugins.snacks")
 require("plugins.conform")
+require("plugins.blink")
