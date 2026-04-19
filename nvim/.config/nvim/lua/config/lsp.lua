@@ -12,15 +12,19 @@ vim.diagnostic.config({
   float = { border = "rounded", source = true },
 })
 
-local augroup = vim.api.nvim_create_augroup("LspConfig", { clear = true })
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = augroup,
+vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    if not vim.lsp.get_clients({ bufnr = args.buf, name = "eslint" })[1] then return end
-    vim.lsp.buf.code_action({
-      context = { only = { "source.fixAll.eslint" }, diagnostics = {} },
-      apply = true,
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client or client.name ~= "eslint" then return end
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.code_action({
+          context = { only = { "source.fixAll.eslint" }, diagnostics = {} },
+          apply = true,
+        })
+      end,
     })
   end,
 })
