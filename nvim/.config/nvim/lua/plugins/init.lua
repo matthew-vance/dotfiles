@@ -8,6 +8,7 @@ vim.pack.add({
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/stevearc/conform.nvim",
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") },
+	"https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
 -- Load order matters: mason first (PATH), then mini.icons before oil reads it.
@@ -17,4 +18,5 @@ require("plugins.catppuccin")
 require("plugins.oil")
 require("plugins.snacks")
 require("plugins.conform")
+require("plugins.treesitter")
 require("plugins.blink")

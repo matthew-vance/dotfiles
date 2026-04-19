@@ -23,6 +23,9 @@ opt.expandtab = true
 
 opt.exrc = true
 
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+
 opt.splitright = true
 opt.splitbelow = true
 opt.undofile = true
