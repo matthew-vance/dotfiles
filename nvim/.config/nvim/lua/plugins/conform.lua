@@ -12,6 +12,7 @@ require("conform").setup({
     html = { "prettierd", "prettier", stop_after_first = true },
     markdown = { "prettierd", "prettier", stop_after_first = true },
     yaml = { "prettierd", "prettier", stop_after_first = true },
+    python = { "ruff_format", "ruff_organize_imports" },
   },
   format_on_save = {
     timeout_ms = 1000,

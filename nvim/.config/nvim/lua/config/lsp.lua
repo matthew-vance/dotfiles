@@ -2,7 +2,7 @@ vim.lsp.config("*", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable({ "lua_ls", "gopls", "vtsls", "eslint" })
+vim.lsp.enable({ "lua_ls", "gopls", "vtsls", "eslint", "basedpyright", "ruff" })
 
 vim.lsp.inlay_hint.enable(true)
 
