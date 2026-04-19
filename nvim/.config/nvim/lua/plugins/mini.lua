@@ -9,6 +9,12 @@ ai.setup({
 })
 
 require("mini.comment").setup()
+require("mini.diff").setup({
+	view = {
+		style = "sign",
+		signs = { add = "▎", change = "▎", delete = "" },
+	},
+})
 require("mini.cursorword").setup()
 require("mini.icons").setup()
 require("mini.pairs").setup()
