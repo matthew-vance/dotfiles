@@ -10,6 +10,7 @@ vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") },
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+	"https://github.com/b0o/SchemaStore.nvim",
 })
 
 -- Load order matters: mason first (PATH), then mini.icons before oil reads it.
