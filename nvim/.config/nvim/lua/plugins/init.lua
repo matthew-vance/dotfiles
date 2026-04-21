@@ -11,6 +11,7 @@ vim.pack.add({
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
 	"https://github.com/b0o/SchemaStore.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
 })
 
 -- Load order matters: mason first (PATH), then mini.icons before oil reads it.

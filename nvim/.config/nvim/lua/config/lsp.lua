@@ -10,7 +10,7 @@ vim.lsp.enable({
 	"basedpyright",
 	"ruff",
 	"bashls",
-	"just_lsp",
+	"just",
 	"jsonls",
 	"yamlls",
 	"dockerls",
