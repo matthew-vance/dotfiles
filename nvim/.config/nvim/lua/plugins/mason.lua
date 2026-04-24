@@ -15,6 +15,8 @@ require("mason-tool-installer").setup({
 		"json-lsp",
 		"just-lsp",
 		"lua-language-server",
+		"oxfmt",
+		"oxlint",
 		"prettierd",
 		"ruff",
 		"stylua",
