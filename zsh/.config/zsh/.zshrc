@@ -4,6 +4,7 @@ export HISTSIZE=50000
 export SAVEHIST=50000
 export ANTIDOTE_DIR=${HOME}/.antidote
 export ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh
+export EDITOR=nvim
 
 export PATH=${PATH}:${HOME}/.local/bin
 export PATH=${HOME}/go/bin:${PATH}

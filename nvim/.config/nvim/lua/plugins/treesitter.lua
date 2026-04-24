@@ -17,6 +17,8 @@ local parsers = {
 	"python",
 	"query",
 	"regex",
+	"rust",
+	"svelte",
 	"terraform",
 	"toml",
 	"tsx",

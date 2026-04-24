@@ -1,1 +1,31 @@
 require("mason").setup()
+
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"ansible-language-server",
+		"basedpyright",
+		"bash-language-server",
+		"css-lsp",
+		"dockerfile-language-server",
+		"emmet-language-server",
+		"eslint-lsp",
+		"goimports",
+		"gopls",
+		"html-lsp",
+		"json-lsp",
+		"just-lsp",
+		"lua-language-server",
+		"prettierd",
+		"ruff",
+		"stylua",
+		"svelte-language-server",
+		"tailwindcss-language-server",
+		"taplo",
+		"terraform-ls",
+		"vtsls",
+		"yaml-language-server",
+	},
+	run_on_start = true,
+	start_delay = 3000,
+	auto_update = false,
+})

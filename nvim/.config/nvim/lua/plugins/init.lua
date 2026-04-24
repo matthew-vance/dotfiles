@@ -2,6 +2,7 @@
 -- https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
 vim.pack.add({
 	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 	"https://github.com/nvim-mini/mini.nvim",
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	"https://github.com/folke/snacks.nvim",
