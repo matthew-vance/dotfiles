@@ -4,6 +4,17 @@ export HISTSIZE=50000
 export SAVEHIST=50000
 export ANTIDOTE_DIR=${HOME}/.antidote
 export ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'
+  --height 40%
+  --layout reverse
+  --border"
 
 # 2. Options
 
@@ -35,15 +46,11 @@ fi
 source ${ANTIDOTE_DIR}/antidote.zsh
 antidote load
 
-# 4. Completion
-autoload -Uz compinit
-compinit -d "$ZSH_CACHE_DIR/zcompdump"
+# 4. Keybindings
+bindkey '^[[A' fzf-history-widget
+bindkey '^[[B' fzf-history-widget
 
-# 5. Keybindings
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# 6. Functions
+# 5. Functions
 function mkcd() {
     mkdir --parents -- "$1" && cd -- "$1"
 }
@@ -76,7 +83,7 @@ function brewup () {
   brew doctor >/dev/null 2>&1 || true
 }
 
-# 7. Aliases
+# 6. Aliases
 alias ...="../.."
 alias ....="../../.."
 alias .....="../../../.."
@@ -133,7 +140,7 @@ alias now='date +"%T"'
 
 alias tf="terraform"
 
-# 8. Tool init
+# 7. Tool init
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)"
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
@@ -141,11 +148,12 @@ command -v docker >/dev/null 2>&1 && eval "$(docker completion zsh)"
 command -v op >/dev/null 2>&1 && eval "$(op completion zsh)"
 command -v uv >/dev/null 2>&1 && eval "$(uv generate-shell-completion zsh)"
 command -v uvx >/dev/null 2>&1 && eval "$(uvx --generate-shell-completion zsh)"
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
-# 9. Prompt
+# 8. Prompt
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
-# 10. Local overrides
+# 9. Local overrides
 if [ -f "${ZDOTDIR}/local.zshrc" ]; then
     source "${ZDOTDIR}/local.zshrc"
 fi
