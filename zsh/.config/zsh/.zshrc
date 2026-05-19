@@ -1,7 +1,7 @@
 # 1. Environment
 export HISTFILE=${XDG_DATA_HOME}/zsh/history
-export HISTSIZE=50000
-export SAVEHIST=50000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export ANTIDOTE_DIR=${HOME}/.antidote
 export ZSH_CACHE_DIR=${XDG_CACHE_HOME}/zsh
 export FZF_CTRL_T_OPTS="
@@ -20,9 +20,7 @@ export FZF_CTRL_R_OPTS="
 
 # History options
 setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -37,6 +35,7 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_MINUS
+setopt NUMERIC_GLOB_SORT
 
 # 3. Plugins
 if [[ ! -d $ANTIDOTE_DIR ]]; then
@@ -47,8 +46,8 @@ source ${ANTIDOTE_DIR}/antidote.zsh
 antidote load
 
 # 4. Keybindings
-bindkey '^[[A' fzf-history-widget
-bindkey '^[[B' fzf-history-widget
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # 5. Functions
 function mkcd() {
@@ -80,7 +79,6 @@ function brewup () {
     echo "mas not installed; skipping Mac App Store upgrades (install with: brew install mas)"
   fi
   brew cleanup
-  brew doctor >/dev/null 2>&1 || true
 }
 
 # 6. Aliases
@@ -118,8 +116,7 @@ alias ip="curl -s https://icanhazip.com; echo"
 
 alias ls='eza --oneline --classify --color=automatic --icons --time-style=long-iso --group-directories-first'
 alias la='ls --all'
-alias ll='ls --all --long --header --binary'
-alias sl="ls"
+alias ll='ls --all --long --header --binary --git'
 
 alias lg="lazygit"
 alias lzd="lazydocker"

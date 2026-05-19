@@ -4,3 +4,4 @@ export PATH=${PATH}:${HOME}/.local/bin
 export PATH=${HOME}/go/bin:${PATH}
 
 export EDITOR=nvim
+export VISUAL=nvim
