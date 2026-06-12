@@ -69,6 +69,21 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Switch to a tmux session via fzf, creating it from the query if none matches
+function tm() {
+    local session
+    session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null \
+        | fzf --border --height 40% --layout reverse \
+              --bind 'enter:accept-or-print-query') || return
+    [ -z "$session" ] && return
+    tmux has-session -t "$session" 2>/dev/null || tmux new-session -d -s "$session"
+    if [ -n "$TMUX" ]; then
+        tmux switch-client -t "$session"
+    else
+        tmux attach-session -t "$session"
+    fi
+}
+
 function brewup () {
   brew update
   brew upgrade
