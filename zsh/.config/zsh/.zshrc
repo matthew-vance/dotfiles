@@ -1,4 +1,5 @@
 # 1. Environment
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 export HISTFILE=${XDG_DATA_HOME}/zsh/history
 export HISTSIZE=100000
 export SAVEHIST=100000
