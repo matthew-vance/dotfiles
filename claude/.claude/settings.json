@@ -3,5 +3,18 @@
     "commit": "",
     "pr": ""
   },
-  "model": "opusplan"
+  "model": "opusplan",
+  "enabledPlugins": {
+    "ponytail@ponytail": true
+  },
+  "extraKnownMarketplaces": {
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "tui": "fullscreen",
+  "agentPushNotifEnabled": true
 }
