@@ -58,11 +58,29 @@
 
 ## Git & PRs
 
-- Conventional commits: `feat:`, `fix:`, `chore:`, `refactor:`, `test:`, `docs:`, etc.
 - Only commit when asked to.
 - Branch naming: `type/short-description` (e.g., `feat/add-user-auth`, `fix/login-redirect`).
 - **Small, focused PRs** — one concern per PR.
 - **Git hooks:** projects should have pre-commit hooks that apply formatting fixes. Use **Lefthook** to manage git hooks unless another tool (husky, lint-staged, etc.) is already in place.
+
+### Commit Messages
+
+- Subject line: imperative mood, ~50 chars, no period at the end.
+  Example: "Fix pagination skipping last item" not "Fixed" or "Fixes."
+- Leave a blank line between subject and body.
+- Body explains *why* the change was made, not just what changed —
+  the diff already shows the "what." Include reasoning, trade-offs,
+  or context a reviewer wouldn't otherwise have.
+- Wrap body text at ~72 chars per line.
+- One logical change per commit. If the subject needs "and," it's
+  probably two commits.
+- Do not use prefixes like feat:, fix:, chore:, or any Conventional
+  Commits style tags. Plain, descriptive subject lines only.
+- Reference issue/ticket numbers when relevant, but don't let that
+  replace an actual explanation in the body.
+- Don't restate the diff in prose (e.g. avoid "changed x to y in
+  file z" as the entire message).
+- Do not include AI attribution in commit messages
 
 ## Shell & Task Runners
 
