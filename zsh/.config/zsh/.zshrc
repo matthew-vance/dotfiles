@@ -130,7 +130,7 @@ alias c="clear"
 alias v="nvim"
 alias ip="curl -s https://icanhazip.com; echo"
 
-alias ls='eza --oneline --classify --color=automatic --icons --time-style=long-iso --group-directories-first'
+alias ls='eza --oneline --classify --color=auto --icons --time-style=long-iso --group-directories-first'
 alias la='ls --all'
 alias ll='ls --all --long --header --binary --git'
 
@@ -162,6 +162,8 @@ command -v op >/dev/null 2>&1 && eval "$(op completion zsh)"
 command -v uv >/dev/null 2>&1 && eval "$(uv generate-shell-completion zsh)"
 command -v uvx >/dev/null 2>&1 && eval "$(uvx --generate-shell-completion zsh)"
 command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+export SDKMAN_DIR="$HOME/.sdkman"
+[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # 8. Prompt
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
