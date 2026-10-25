@@ -27,7 +27,7 @@
 - **Follow existing project patterns** — don't override them with these personal preferences. These are defaults for new code and new projects.
 - Follow **idiomatic style for the language** being used. Language-specific preferences below only apply to their respective languages.
 - **Organize by feature/domain** — co-locate related files rather than grouping by layer.
-- Comments only for non-obvious _why_, not _what_. Code should be self-documenting.
+- Comments only for non-obvious _why_, not _what_. Code should be self-documenting. Doc comments are the exception: write them wherever the language's tooling expects them (in Go, every exported identifier, starting with its name), saying what a caller needs that the name and signature don't.
 - When editing code that doesn't follow these preferences: refactor if trivial, otherwise flag it and move on.
 
 ### TypeScript / JavaScript
