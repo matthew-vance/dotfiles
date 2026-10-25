@@ -3,9 +3,32 @@
     "commit": "",
     "pr": ""
   },
-  "model": "opusplan",
+  "model": "opus",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/matthewvance/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"/Users/matthewvance/.claude/plugins/cache/ponytail/ponytail/4.8.4/hooks/ponytail-statusline.sh\""
+  },
   "enabledPlugins": {
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "mattpocock-skills@claude-plugins-official": true,
+    "superpowers@anthropic-plugin-directory": true,
+    "frontend-design@anthropic-plugin-directory": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -16,5 +39,6 @@
     }
   },
   "tui": "fullscreen",
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skipWorkflowUsageWarning": true
 }
